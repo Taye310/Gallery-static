@@ -10,6 +10,7 @@
   "dependencies": {
     "@amap/amap-jsapi-loader": "^1.0.1",
     "@arcgis/core": "^4.22.2",
+    "axios": "^0.26.1",
     "core-js": "^3.6.5",
     "v-viewer": "^1.6.4",
     "vue": "^2.6.11",
