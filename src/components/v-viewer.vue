@@ -49,7 +49,7 @@ export default {
     };
   },
   mounted(){
-    axios.get('http://localhost:8080/hello')
+    axios.get('api/photo/random/')
     .then(response=>{
       console.log(response);
     })
