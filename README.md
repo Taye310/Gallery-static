@@ -1,5 +1,9 @@
 # gallery
 
+## 配置
+
+main.js: NAS用户名密码
+
 ## Project setup
 ```
 npm install

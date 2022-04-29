@@ -1,23 +1,14 @@
 <template>
   <div class="v-viewer">
-    <!-- directive -->
-    <div class="images" v-viewer>
-      <img v-for="(src, index) in images" :key="index" :src="src.thumbnail" />
-    </div>
     <!-- component -->
     <viewer :images="images">
-      <img v-for="(src, index) in images" :key="index" :src="src.thumbnail" :data-src="src.source" />
+      <img
+        v-for="(src, index) in images"
+        :key="index"
+        :src="src.thumbnail"
+        :data-src="src.source"
+      />
     </viewer>
-    <!-- api -->
-    <button type="button" @click="show">Click to show</button>
-    <div v-viewer="options" class="tests">
-      <template v-for="(src, index) in images">
-        <img 
-          :src="src.thumbnail" class="test" :key="index"
-          :data-src="src.source"
-        >
-      </template>
-    </div>
   </div>
 </template>
 
@@ -27,7 +18,7 @@ import VueViewer from "v-viewer";
 import Vue from "vue";
 Vue.use(VueViewer);
 
-const axios = require('axios').default;
+const axios = require("axios").default;
 
 export default {
   data() {
@@ -48,16 +39,25 @@ export default {
       ],
     };
   },
-  mounted(){
-    axios.get('api/photo/random/')
-    .then(response=>{
-      console.log(response);
-    })
+  mounted() {
+    this.getPhotos();
   },
   methods: {
-    show() {
-      this.$viewerApi({
-        images: this.images,
+    getPhotos() {
+      axios.get("api/photo/random/").then((response) => {
+        console.log(response.data);
+        let photos = response.data.data;
+        photos.forEach((photo) => {
+          console.log(photo.link);
+          if (photo.link.substr(0, 2) == "./") {
+            this.images.push({
+              thumbnail:
+                "https://providencezhang.ddns.net:8031/shares/" + photo.link,
+              source:
+                "https://providencezhang.ddns.net:8031/shares/" + photo.link,
+            });
+          }
+        });
       });
     },
   },
