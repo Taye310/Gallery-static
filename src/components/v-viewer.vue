@@ -43,7 +43,7 @@ export default {
         {
           thumbnail: "https://picsum.photos/250/200",
           source:
-            "https://providencezhang.ddns.net:8031/shares/root/pics/2021.11.7%e6%99%af%e5%b1%b1/Export/DSC_7470.jpg",
+            "https://providencezhang.ddns.net:8031/shares/root/pics/2021.11.7/Export/DSC_7470.jpg",
         },
       ],
     };
